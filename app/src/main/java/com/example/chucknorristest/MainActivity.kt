@@ -3,6 +3,7 @@ package com.example.chucknorristest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.chucknorristest.databinding.ActivityMainBinding
+import com.example.chucknorristest.view.NamedJokeFragment
 import com.example.chucknorristest.view.SingleJokeFragment
 
 class MainActivity : AppCompatActivity() {
@@ -18,11 +19,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         binding.btnSingleJoke.setOnClickListener { openSingleJokeFragment() }
+        binding.btnNamedJoke.setOnClickListener { openNamedJokeFragment() }
+    }
+
+    private fun openNamedJokeFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, NamedJokeFragment())
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun openSingleJokeFragment() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, SingleJokeFragment())
+            .addToBackStack(null)
             .commit()
     }
 }

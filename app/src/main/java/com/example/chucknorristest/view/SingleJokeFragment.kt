@@ -47,10 +47,10 @@ class SingleJokeFragment: Fragment() {
         binding.tvSingleJoke.text = dataItem.value.joke
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getSingleJoke()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        viewModel.getSingleJoke()
+//    }
 }
 
 

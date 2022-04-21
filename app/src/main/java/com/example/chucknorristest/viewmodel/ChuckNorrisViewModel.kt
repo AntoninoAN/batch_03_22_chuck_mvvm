@@ -48,7 +48,29 @@ class ChuckNorrisViewModel: ViewModel() {
             )
     }
 
-    fun getNamedJoke(firstName: String, lastName: String){}
+    fun getNamedJoke(firstName: String,
+                     lastName: String){
+        Network.chuckApi.getNamedJoke(firstName, lastName)
+            .enqueue(
+                object : Callback<JokeResponse>{
+                    override fun onResponse(
+                        call: Call<JokeResponse>,
+                        response: Response<JokeResponse>
+                    ) {
+                        if (response.isSuccessful)
+                            response.body()?.let {
+                                _singleJoke.value = it
+                            } ?: kotlin.run {
+                                _error.value = response.message()
+                            }
+                    }
+
+                    override fun onFailure(call: Call<JokeResponse>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+                }
+            )
+    }
 
     fun getNextPage(){}
 }

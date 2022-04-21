@@ -3,4 +3,6 @@
     <string name="single_joke">Single Joke</string>
     <string name="named_joke">Named Joke</string>
     <string name="endless_joke">Endless Joke</string>
+    <string name="input_your_full_name">Input your full name</string>
+    <string name="get_joke">Get joke!</string>
 </resources>
